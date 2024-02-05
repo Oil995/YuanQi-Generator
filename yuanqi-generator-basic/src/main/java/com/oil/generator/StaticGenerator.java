@@ -10,7 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 
 /**
- * @author 肖周坤
+ * @author 走肖
  * @version 2.3
  * 静态文件生成
  */

@@ -7,7 +7,7 @@ import picocli.CommandLine.Option;
 import java.util.concurrent.Callable;
 
 /**
- * @author 肖周坤
+ * @author 走肖
  * @version 2.3
  * Picocli 命令行工具示例代码（交互式输入）
  */

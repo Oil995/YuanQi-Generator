@@ -6,7 +6,7 @@ import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 /**
- * @author 肖周坤
+ * @author 走肖
  * @version 2.3
  * Picocli 命令行工具示例代码（命令解析）
  */

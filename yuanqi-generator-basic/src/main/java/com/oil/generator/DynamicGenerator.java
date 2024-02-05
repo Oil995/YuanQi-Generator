@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * @author 肖周坤
+ * @author 走肖
  * @version 2.3
  * 动态文件生成
  */
