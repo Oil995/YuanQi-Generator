@@ -1,36 +1,22 @@
-package com.oil.generator;
+package ${basePackage}.generator;
 
-import com.oil.model.MainTemplateConfig;
+import cn.hutool.core.io.FileUtil;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-import java.io.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
 /**
- * @author 走肖
- * @version 2.3
  * 动态文件生成
  */
 public class DynamicGenerator {
-
-    public static void main(String[] args) throws IOException, TemplateException {
-        String projectPath = System.getProperty("user.dir");
-        // 输入路径
-        String inputPath = projectPath + File.separator + "src/main/resources/templates/MainTemplate.java.ftl";
-        // 输出路径
-        String outputPath = projectPath + File.separator + "MainTemplate.java";
-        MainTemplateConfig mainTemplateConfig = new MainTemplateConfig();
-        // 数据模板
-        mainTemplateConfig.setAuthor("xiao");
-        mainTemplateConfig.setLoop(false);
-        mainTemplateConfig.setOutputText("求和结果：");
-
-        doGenerate(inputPath, outputPath, mainTemplateConfig);
-    }
 
     /**
      * 生成文件
@@ -57,6 +43,10 @@ public class DynamicGenerator {
         String templateName = new File(inputPath).getName();
         Template template = configuration.getTemplate(templateName, "utf-8"); // ①解决动态生成模板的中文乱码
 
+        // 如果文件不存在新建文件
+        if (!FileUtil.exist(outputPath)) {
+            FileUtil.touch(outputPath);
+        }
 
         // 生成
 //        Writer out = new FileWriter(outputPath);
