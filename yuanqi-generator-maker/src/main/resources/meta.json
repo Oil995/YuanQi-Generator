@@ -6,8 +6,9 @@
   "author": "走肖",
   "createTime": "2024-2-6",
   "fileConfig": {
-    "inputRootPath": "G:/YuanQi-Generator/yuanqi-generator-demo/acm-template-pro",
+    "inputRootPath": ".source/acm-template-pro",
     "outputRootPath": "generated",
+    "sourceRootPath": "G:/YuanQi-Generator/yuanqi-generator-demo/acm-template-pro",
     "type": "dir",
     "files": [
       {
