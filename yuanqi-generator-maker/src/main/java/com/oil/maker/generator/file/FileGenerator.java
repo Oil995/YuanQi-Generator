@@ -13,13 +13,13 @@ import java.io.IOException;
  */
 public class FileGenerator {
 
-    public static void main(String[] args) throws TemplateException, IOException {
-        DataModel dataModel = new DataModel();
-        dataModel.setLoop(true);
-        dataModel.setAuthor("走肖");
-        dataModel.setOutputText("求和");
-        doGenerate(dataModel);
-    }
+//    public static void main(String[] args) throws TemplateException, IOException {
+//        DataModel dataModel = new DataModel();
+//        dataModel.setLoop(true);
+//        dataModel.setAuthor("走肖");
+//        dataModel.setOutputText("求和");
+//        doGenerate(dataModel);
+//    }
 
     public static void doGenerate(DataModel dataModel) throws TemplateException, IOException {
         // 获取整个项目的根路径
