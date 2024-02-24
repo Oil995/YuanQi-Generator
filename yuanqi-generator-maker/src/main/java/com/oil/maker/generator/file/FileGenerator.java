@@ -1,6 +1,5 @@
 package com.oil.maker.generator.file;
 
-import com.oil.maker.model.DataModel;
 import freemarker.template.TemplateException;
 
 import java.io.File;
@@ -13,15 +12,7 @@ import java.io.IOException;
  */
 public class FileGenerator {
 
-//    public static void main(String[] args) throws TemplateException, IOException {
-//        DataModel dataModel = new DataModel();
-//        dataModel.setLoop(true);
-//        dataModel.setAuthor("走肖");
-//        dataModel.setOutputText("求和");
-//        doGenerate(dataModel);
-//    }
-
-    public static void doGenerate(DataModel dataModel) throws TemplateException, IOException {
+    public static void doGenerate(Object model) throws TemplateException, IOException {
         // 获取整个项目的根路径
         String projectPath = System.getProperty("user.dir");
         File parentFile = new File(projectPath).getParentFile();  // 上级目录
@@ -40,7 +31,7 @@ public class FileGenerator {
         String dynamicOutputPath = projectPath + File.separator + "acm-template/src/com/com.oil/acm/MainTemplate.java";
 
         // 再动态修改
-        DynamicFileGenerator.doGenerate(dynamicInputPath, dynamicOutputPath, dataModel);
+        DynamicFileGenerator.doGenerate(dynamicInputPath, dynamicOutputPath, model);
     }
 
 }

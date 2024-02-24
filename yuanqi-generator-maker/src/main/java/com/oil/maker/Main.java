@@ -1,7 +1,5 @@
 package com.oil.maker;
 
-import com.oil.maker.cli.CommandExecutor;
-import com.oil.maker.cli.utils.OptionUtil;
 import com.oil.maker.generator.main.MainGenerator;
 import freemarker.template.TemplateException;
 

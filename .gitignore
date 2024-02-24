@@ -1,3 +1,4 @@
+.temp/
 generated/
 out/
 !**/src/main/**/out/
