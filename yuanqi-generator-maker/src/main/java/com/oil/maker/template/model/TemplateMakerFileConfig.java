@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author 走肖
  * @version 2.3
- * 文件配置类
+ * 文件配置
  */
 @Data
 public class TemplateMakerFileConfig {
