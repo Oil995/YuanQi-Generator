@@ -3,6 +3,7 @@ package com.oil.maker.generator.main;
 import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
 import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.ZipUtil;
 import com.oil.maker.generator.JarGenerator;
 import com.oil.maker.generator.ScriptGenerator;
 import com.oil.maker.generator.file.DynamicFileGenerator;
@@ -18,7 +19,7 @@ import java.io.IOException;
  * @version 2.3
  * 代码生成模板抽象类
  */
-public class GenerateTemplate {
+public abstract class GenerateTemplate {
 
     public void doGenerate() throws TemplateException, IOException, InterruptedException {
         Meta meta = MetaManager.getMetaObject();
@@ -179,8 +180,9 @@ public class GenerateTemplate {
      * @param sourceCopyDestPath
      * @param jarPath
      * @param shellOutputFilePath
+     * @return 产物包路径
      */
-    protected void buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
+    protected String buildDist(String outputPath, String sourceCopyDestPath, String jarPath, String shellOutputFilePath) {
         String distOutputPath = outputPath + "-dist";
         // - 拷贝 jar 包
         String targetAbsolutePath = distOutputPath + File.separator + "target";
@@ -192,6 +194,19 @@ public class GenerateTemplate {
         FileUtil.copy(shellOutputFilePath + ".bat", distOutputPath, true);
         // - 拷贝源模板文件
         FileUtil.copy(sourceCopyDestPath, distOutputPath, true);
+        return distOutputPath;
+    }
+
+    /**
+     * 制作压缩包
+     *
+     * @param outputPath
+     * @return 压缩包路径
+     */
+    protected String buildZip(String outputPath) {
+        String zipPath = outputPath + ".zip";
+        ZipUtil.zip(outputPath, zipPath);
+        return zipPath;
     }
 }
 

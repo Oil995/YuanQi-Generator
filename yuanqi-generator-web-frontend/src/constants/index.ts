@@ -11,4 +11,4 @@ export const BACKEND_HOST_PROD = 'https://xxx';
 /**
  * COS 访问地址
  */
-export const COS_HOST = 'https://xxx';
+export const COS_HOST = 'https://yuanqi-1319847784.cos.ap-chengdu.myqcloud.com';
