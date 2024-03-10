@@ -1,7 +1,7 @@
 package com.oil.web.model.vo;
 
 import cn.hutool.json.JSONUtil;
-import com.oil.web.meta.Meta;
+import com.oil.maker.meta.Meta;
 import com.oil.web.model.entity.Generator;
 import lombok.Data;
 import org.springframework.beans.BeanUtils;

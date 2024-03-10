@@ -21,12 +21,16 @@ import java.io.IOException;
  */
 public abstract class GenerateTemplate {
 
-    public void doGenerate() throws TemplateException, IOException, InterruptedException {
-        Meta meta = MetaManager.getMetaObject();
-
-        // 0.输出根路径
-        String projectPath = System.getProperty("user.dir");
-        String outputPath = projectPath + File.separator + "generated" + File.separator + meta.getName();
+    /**
+     * 生成（重载）
+     *
+     * @param meta
+     * @param outputPath
+     * @throws TemplateException
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public void doGenerate(Meta meta, String outputPath) throws TemplateException, IOException, InterruptedException {
         if (!FileUtil.exist(outputPath)) {
             FileUtil.mkdir(outputPath);
         }
@@ -45,6 +49,23 @@ public abstract class GenerateTemplate {
 
         // 5.生成精简版的程序（产物包）
         buildDist(outputPath, sourceCopyDestPath, jarPath, shellOutputFilePath);
+    }
+
+    /**
+     * 生成
+     *
+     * @throws TemplateException
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public void doGenerate() throws TemplateException, IOException, InterruptedException {
+        Meta meta = MetaManager.getMetaObject();
+
+        // 0.输出根路径
+        String projectPath = System.getProperty("user.dir");
+        String outputPath = projectPath + File.separator + "generated" + File.separator + meta.getName();
+
+        doGenerate(meta, outputPath);
     }
 
     /**
@@ -71,8 +92,7 @@ public abstract class GenerateTemplate {
      */
     protected void generateCode(Meta meta, String outputPath) throws TemplateException, IOException {
         // 读取 resources 目录
-        ClassPathResource classPathResource = new ClassPathResource("");
-        String inputResourcePath = classPathResource.getAbsolutePath();
+        String inputResourcePath ="";
 
         // Java 包基础路径
         String outputBasePackage = meta.getBasePackage();
@@ -95,6 +115,11 @@ public abstract class GenerateTemplate {
         // cli.command.GenerateCommand
         inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/GenerateCommand.java.ftl";
         outputFilePath = outputBaseJavaPackagePath + "/cli/command/GenerateCommand.java";
+        DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
+
+        // cli.command.JsonGenerateCommand
+        inputFilePath = inputResourcePath + File.separator + "templates/java/cli/command/JsonGenerateCommand.java.ftl";
+        outputFilePath = outputBaseJavaPackagePath + "/cli/command/JsonGenerateCommand.java";
         DynamicFileGenerator.doGenerate(inputFilePath, outputFilePath, meta);
 
         // cli.command.ListCommand
